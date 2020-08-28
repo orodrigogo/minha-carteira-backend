@@ -8,9 +8,6 @@ server.get('/boasvindas', function(request, response){
 });
 
 
-
-
-
 server.listen(3333, function(){
   console.log('O PAI TÁ ON!');
 });
