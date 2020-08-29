@@ -18,7 +18,7 @@ class UserController{
       return response.json({ message: 'password not match'});
 
     return response.send('Agora vai que é tua Service!');
-  }
+  }  
 }
 
 module.exports = new UserController();
