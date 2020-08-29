@@ -1,11 +1,8 @@
 const express = require('express');
 const server = express();
 
-server.get('/boasvindas', function(request, response){
-
-  response.send('<h1>API ON!</h1>');
-
-});
+const routes = require('./routes');
+server.use(routes);
 
 
 server.listen(3333, function(){
