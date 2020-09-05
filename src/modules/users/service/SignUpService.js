@@ -1,14 +1,20 @@
 const UsersRepository = require('../repositories/UsersRepository');
 
-class SignUpService
-{
-    async execute(data){
-        const {name , email, password} = data;
+class SignUpService {
+  async execute(data){
+    const { name, email, password } = data;
 
-        const user = await UsersRepository.add({name, email, password});
+    const emailAlreadyUsed = await UsersRepository.findByEmail(email);
 
-        return user;
-    }
+    if(emailAlreadyUsed)
+      return { error: 'email not available. Choose another!' };
+      
+    
+
+    const user = await UsersRepository.add({ name, email, password});
+   
+    return user;
+  }
 }
 
 module.exports = new SignUpService();
