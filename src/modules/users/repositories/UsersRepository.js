@@ -5,7 +5,7 @@ class UsersRepository {
 
     const user = await mongo
     .collection('users')
-    .insert(data)
+    .insertOne(data)
     .then(result => {
       return result;
     });  

@@ -7,7 +7,7 @@ class SignUpService {
     const emailAlreadyUsed = await UsersRepository.findByEmail(email);
 
     if(emailAlreadyUsed)
-      return { error: 'email not avaiable. Choise another!' };
+      return { error: 'Email not avaiable. Choise another!' };
       
     
 
