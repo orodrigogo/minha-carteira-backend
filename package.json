@@ -5,6 +5,11 @@
   "scripts": {
     "start": "nodemon ./src/infra/http/server.js"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "echo Sextooooou"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rodrigorgtic/minha-carteira-backend.git"
@@ -21,6 +26,7 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.3.0",
     "prettier": "^2.1.1"
   }
 }
