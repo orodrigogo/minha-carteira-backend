@@ -2,7 +2,7 @@ const SignUpService = require('../service/SignUpService');
 
 class UserController {
   async create(request, response) {
-    const { name, email, password, password_confirm } = request.body;
+    const { name, email, password, passwordConfirm } = request.body;
 
     if (!name) {
       return response.json({ message: 'name is required' });
@@ -16,10 +16,10 @@ class UserController {
       return response.json({ message: 'password is required' });
     }
 
-    if (!password_confirm)
-      return response.json({ message: 'password_confirm is required' });
+    if (!passwordConfirm)
+      return response.json({ message: 'passwordConfirm is required' });
 
-    if (password !== password_confirm)
+    if (password !== passwordConfirm)
       return response.json({ message: 'password not match' });
 
     const user = await SignUpService.execute({ name, email, password });
