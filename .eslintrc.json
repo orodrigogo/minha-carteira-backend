@@ -2,7 +2,8 @@
     "env": {
         "commonjs": true,
         "es2021": true,
-        "node": true
+        "node": true,
+        "jest": true
     },
     "extends": [
         "airbnb-base",
@@ -16,6 +17,7 @@
     },
     "rules": {
       "prettier/prettier": ["error", {"endOfLine":"auto"}],
-      "class-methods-use-this": "off"
+      "class-methods-use-this": "off",
+      "camelcase": "off"
     }
 }
