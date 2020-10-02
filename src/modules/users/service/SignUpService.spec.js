@@ -14,6 +14,6 @@ describe('SignUpService', () => {
 
     const user = await signUpService.execute(data);
 
-    expect(user.ops[0]).toHaveProperty('_id');
+    expect(user).toHaveProperty('id');
   });
 });
