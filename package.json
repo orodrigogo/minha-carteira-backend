@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./src/infra/http/server.js",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "test:commit": "jest --passWithNoTests"
   },
   "husky": {
     "hooks": {
@@ -15,7 +16,7 @@
     "*.js": [
       "eslint --fix",
       "git add",
-      "npm run test"
+      "npm run test:commit"
     ]
   },
   "repository": {

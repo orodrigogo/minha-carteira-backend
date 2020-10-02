@@ -9,7 +9,7 @@ class SignUpService {
     const emailAlreadyUsed = await this.usersRepository.findByEmail(email);
 
     if (emailAlreadyUsed)
-      return { error: 'Email not avaiable. Choise another!' };
+      return { error: 'email not avaiable. choise another!' };
 
     const user = await this.usersRepository.add({ name, email, password });
 
