@@ -5,7 +5,7 @@
   "scripts": {
     "start": "nodemon ./src/infra/http/server.js",
     "test": "jest --watchAll",
-    "test:commit": "jest --passWithNoTests"
+    "test:commit": "jest --passWithNoTests --findRelatedTests"
   },
   "husky": {
     "hooks": {
