@@ -9,9 +9,17 @@ class UsersRepository {
         return result;
       });
 
-    delete user.ops[0].password;
+    const userFormatted = {
+      // eslint-disable-next-line
+      id: user.ops[0]._id,
+      ...user.ops[0],
+    };
 
-    return user;
+    delete userFormatted.password;
+    // eslint-disable-next-line
+    delete userFormatted._id;
+
+    return userFormatted;
   }
 
   async findByEmail(email) {

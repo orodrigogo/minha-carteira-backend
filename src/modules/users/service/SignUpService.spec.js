@@ -1,4 +1,5 @@
 const UsersRepositoryFake = require('../repositories/UsersRepositoryFake');
+const HashProvider = require('../providers/HashProvider/model/HashProviderModel');
 const SignUpService = require('./SignUpService');
 
 describe('SignUpService', () => {
@@ -10,7 +11,8 @@ describe('SignUpService', () => {
     };
 
     const usersRepositoryFake = new UsersRepositoryFake();
-    const signUpService = new SignUpService(usersRepositoryFake);
+    const hashProvider = new HashProvider();
+    const signUpService = new SignUpService(usersRepositoryFake, hashProvider);
 
     const user = await signUpService.execute(data);
 
