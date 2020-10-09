@@ -9,7 +9,14 @@ class UsersRepositoryFake {
   }
 
   async findByEmail(email) {
-    const user = email === 'exist@email.com' ? email : null;
+    const user =
+      email === 'exist@email.com'
+        ? {
+            id: 'any_id',
+            email,
+            password: 'any_password',
+          }
+        : null;
 
     return user;
   }

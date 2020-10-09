@@ -6,6 +6,12 @@ class Bcrypt {
 
     return hashed;
   }
+
+  async compare(password, passwordHashed) {
+    const passwordMatch = await bcrypt.compare(password, passwordHashed);
+
+    return passwordMatch;
+  }
 }
 
 module.exports = Bcrypt;

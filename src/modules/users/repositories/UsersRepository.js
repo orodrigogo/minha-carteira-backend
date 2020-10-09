@@ -10,13 +10,11 @@ class UsersRepository {
       });
 
     const userFormatted = {
-      // eslint-disable-next-line
       id: user.ops[0]._id,
       ...user.ops[0],
     };
 
     delete userFormatted.password;
-    // eslint-disable-next-line
     delete userFormatted._id;
 
     return userFormatted;
@@ -30,7 +28,10 @@ class UsersRepository {
         return result;
       });
 
-    return user;
+    return {
+      id: user._id,
+      ...user,
+    };
   }
 }
 

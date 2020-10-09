@@ -15,8 +15,8 @@
   "lint-staged": {
     "*.js": [
       "eslint --fix",
-      "git add",
-      "npm run test:commit"
+      "npm run test:commit",
+      "git add"
     ]
   },
   "repository": {
