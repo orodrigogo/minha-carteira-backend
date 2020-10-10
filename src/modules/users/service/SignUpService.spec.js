@@ -18,4 +18,20 @@ describe('SignUpService', () => {
 
     expect(user).toHaveProperty('id');
   });
+
+  test('should be error message if email already used', async () => {
+    const data = {
+      name: 'any_user',
+      email: 'exist@email.com',
+      password: 'any_password',
+    };
+
+    const usersRepositoryFake = new UsersRepositoryFake();
+    const hashProvider = new HashProvider();
+    const signUpService = new SignUpService(usersRepositoryFake, hashProvider);
+
+    const user = await signUpService.execute(data);
+
+    expect(user).toHaveProperty('error');
+  });
 });
