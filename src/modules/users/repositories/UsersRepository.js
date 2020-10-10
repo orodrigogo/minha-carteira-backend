@@ -28,10 +28,13 @@ class UsersRepository {
         return result;
       });
 
-    return {
+    const userFormatted = {
       id: user._id,
       ...user,
     };
+
+    delete userFormatted._id;
+    return userFormatted;
   }
 }
 
