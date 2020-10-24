@@ -1,9 +1,8 @@
-// const { sign } = require('jsonwebtoken');
-
 class SignInService {
-  constructor(usersRepository, cryptProvider) {
+  constructor(usersRepository, cryptProvider, tokenProvider) {
     this.usersRepository = usersRepository;
     this.cryptProvider = cryptProvider;
+    this.tokenProvider = tokenProvider;
   }
 
   async execute(data) {
@@ -24,11 +23,14 @@ class SignInService {
       return { error: "password doesn't match" };
     }
 
-    // Vamos Gerar o Token de autenticação aqui!
-
     delete user.password;
 
-    return user;
+    const token = await this.tokenProvider.generate(user.id);
+
+    return {
+      user,
+      token,
+    };
   }
 }
 

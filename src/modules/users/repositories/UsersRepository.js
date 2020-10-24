@@ -2,12 +2,7 @@ const mongo = require('../../../infra/database/mongoose');
 
 class UsersRepository {
   async add(data) {
-    const user = await mongo
-      .collection('users')
-      .insertOne(data)
-      .then(result => {
-        return result;
-      });
+    const user = await mongo.collection('users').insertOne(data);
 
     const userFormatted = {
       id: user.ops[0]._id,
@@ -21,12 +16,9 @@ class UsersRepository {
   }
 
   async findByEmail(email) {
-    const user = await mongo
-      .collection('users')
-      .findOne({ email })
-      .then(result => {
-        return result;
-      });
+    const user = await mongo.collection('users').findOne({ email });
+
+    if (!user) return undefined;
 
     const userFormatted = {
       id: user._id,

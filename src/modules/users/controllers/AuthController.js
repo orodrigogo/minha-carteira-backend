@@ -1,6 +1,7 @@
 const SignInService = require('../service/SignInService');
 const UsersRepository = require('../repositories/UsersRepository');
 const BcryptProvider = require('../providers/HashProvider/implementations/Bcrypt');
+const JwtToken = require('../providers/TokenProvider/implementations/JwtToken');
 
 class AuthController {
   async create(request, response) {
@@ -11,7 +12,13 @@ class AuthController {
 
     const usersRepository = new UsersRepository();
     const bcryptProvider = new BcryptProvider();
-    const signInService = new SignInService(usersRepository, bcryptProvider);
+    const jwtToken = new JwtToken();
+
+    const signInService = new SignInService(
+      usersRepository,
+      bcryptProvider,
+      jwtToken,
+    );
 
     const user = await signInService.execute({
       email,
