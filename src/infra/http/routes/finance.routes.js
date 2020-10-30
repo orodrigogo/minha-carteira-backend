@@ -4,6 +4,6 @@ const authenticated = require('../middlewares/authenticated');
 
 const financeRouter = Router();
 
-financeRouter.post('/entry', authenticated, entryController.create);
+financeRouter.post('/moviment', authenticated, entryController.create);
 
 module.exports = financeRouter;
