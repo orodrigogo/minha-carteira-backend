@@ -1,5 +1,6 @@
 const MovimentRegister = require('../services/MovimentRegister');
 const FinanceRepository = require('../repositories/FinanceRepository');
+const MovimentListByUser = require('../services/MovimentListByUser');
 
 class MovimentController {
   async create(request, response) {
@@ -26,6 +27,18 @@ class MovimentController {
     const idMoviment = request.params.id;
 
     return response.json(idMoviment);
+  }
+
+  async index(request, response) {
+    const repository = new FinanceRepository();
+    const movimentListByUser = new MovimentListByUser(repository);
+
+    const user_id = request.user.id.sub;
+    const { type, frequency } = request.query;
+
+    const finance = await movimentListByUser.execute(user_id, type, frequency);
+
+    response.json(finance);
   }
 }
 

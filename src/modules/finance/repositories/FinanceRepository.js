@@ -13,6 +13,19 @@ class FinanceRepository {
 
     return movimentFormatted;
   }
+
+  async movimentsByUser(id, type, frequency) {
+    const moviments = await mongo
+      .collection('moviments')
+      .find({
+        user_id: { $eq: id },
+        type: { $eq: type },
+        frequency: { $eq: frequency },
+      })
+      .toArray();
+
+    return moviments;
+  }
 }
 
 module.exports = FinanceRepository;
