@@ -35,6 +35,8 @@ class FinanceRepository {
 
     return moviment;
   }
+
+  // async movimentRemove(id) {}
 }
 
 module.exports = FinanceRepository;
