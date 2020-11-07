@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const mongo = require('../../../infra/database/mongoose');
 
 class FinanceRepository {
@@ -25,6 +26,14 @@ class FinanceRepository {
       .toArray();
 
     return moviments;
+  }
+
+  async movimentById(id) {
+    const moviment = await mongo
+      .collection('moviments')
+      .findOne({ _id: mongoose.Types.ObjectId(id) });
+
+    return moviment;
   }
 }
 
