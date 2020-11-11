@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/infra/http/server.js"
+    "start": "nodemon ./src/infra/http/server.js",
+    "test": "jest --watchAll",
+    "test:commit": "jest --passWithNoTests --findRelatedTests",
+    "test:report": "jest --coverage"
   },
   "husky": {
     "hooks": {
@@ -13,6 +16,7 @@
   "lint-staged": {
     "*.js": [
       "eslint --fix",
+      "npm run test:commit",
       "git add"
     ]
   },
@@ -20,10 +24,13 @@
     "type": "git",
     "url": "git+https://github.com/renanb4/minha-carteira-backend.git"
   },
-  "author": "Renan Michel Barbosa Rodrigues",
+  "author": "Renan Michel",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.3"
   },
   "devDependencies": {
@@ -33,6 +40,7 @@
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
+    "jest": "^26.4.2",
     "lint-staged": "^10.3.0",
     "prettier": "^2.1.1"
   }

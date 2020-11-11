@@ -1,18 +1,27 @@
-const UsersRepository = require('../repositories/UsersRepository');
-
 class SignUpService {
+  constructor(usersRepository, cryptProvider) {
+    this.usersRepository = usersRepository;
+    this.cryptProvider = cryptProvider;
+  }
+
   async execute(data) {
     const { name, email, password } = data;
 
-    const emailAlreadyUsed = await UsersRepository.findByEmail(email);
+    const emailAlreadyUsed = await this.usersRepository.findByEmail(email);
 
     if (emailAlreadyUsed)
-      return { error: 'email not available. Choose another!' };
+      return { error: 'Email not avaiable. Choise another!' };
 
-    const user = await UsersRepository.add({ name, email, password });
+    const passwordeHashed = await this.cryptProvider.hash(password, 10);
+
+    const user = await this.usersRepository.add({
+      name,
+      email,
+      password: passwordeHashed,
+    });
 
     return user;
   }
 }
 
-module.exports = new SignUpService();
+module.exports = SignUpService;
