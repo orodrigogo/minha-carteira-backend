@@ -36,6 +36,7 @@ class FinanceRepository {
     return moviment;
   }
 
+  // Usa a função deleteOne para apagar o movimento pelo id
   async movimentRemove(id) {
     const moviment = await mongo
       .collection('moviments')

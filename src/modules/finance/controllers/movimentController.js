@@ -25,18 +25,6 @@ class MovimentController {
     return response.json(finance);
   }
 
-  async delete(request, response) {
-    const repository = new FinanceRepository();
-    const movimentRemove = new MovimentRemove(repository);
-    const user_id = request.user.id.sub;
-    const moviment_id = request.params.id;
-
-    const finance = await movimentRemove.execute(user_id, moviment_id);
-
-    // A sua atividade é finalizar essa funcionalidade.
-    return response.json(finance);
-  }
-
   async index(request, response) {
     const repository = new FinanceRepository();
     const movimentListByUser = new MovimentListByUser(repository);
@@ -50,15 +38,27 @@ class MovimentController {
   }
 
   async show(request, response) {
+    const moviment_id = request.params.id;
+    const user_id = request.user.id.sub;
+
     const repository = new FinanceRepository();
     const movimentShow = new MovimentShow(repository);
-
-    const user_id = request.user.id.sub;
-    const moviment_id = request.params.id;
 
     const finance = await movimentShow.execute(user_id, moviment_id);
 
     response.json(finance);
+  }
+
+  async delete(request, response) {
+    const moviment_id = request.params.id;
+    const user_id = request.user.id.sub;
+
+    const repository = new FinanceRepository();
+    const movimentRemove = new MovimentRemove(repository);
+
+    const finance = await movimentRemove.execute(user_id, moviment_id);
+
+    return response.json(finance);
   }
 }
 
