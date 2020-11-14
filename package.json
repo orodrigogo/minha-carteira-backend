@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/infra/http/server.js",
+    "start": "node ./src/infra/http/server.js",
+    "start:dev": "nodemon ./src/infra/http/server.js",
     "test": "jest --watchAll",
     "test:commit": "jest --passWithNoTests --findRelatedTests",
     "test:report": "jest --coverage"
